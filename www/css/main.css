@@ -65,10 +65,11 @@ nav > ul li a{
 	font-style:italic;
 	color:#000;
 	font-variant:small-caps;
+	line-height:20px;
 	padding:0 3px;
 	text-decoration:none;
 }
-.active a{ 
+li.active{ 
 	border-bottom:4px solid #ca0808;
 }
 div#logo {
@@ -87,7 +88,11 @@ div#logo {
     margin: 0 auto -60px;
     min-height: 100%;
 }
-#header, #footer{
+#header{
+	background: url("../img/plashka.png") repeat-x scroll center bottom, url("../img/header.png") repeat scroll 0 0 transparent;
+    padding: 0 0 5px;
+}
+#footer{
 	background:url("../img/header.png")
 }
 #footer {

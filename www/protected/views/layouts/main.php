@@ -16,7 +16,6 @@
 
 <body>
 	<div id="wrap">
-	
 		<div id="header">
 			<div class="container">
 				<div id="logo">
@@ -24,7 +23,6 @@
 				</div>
 				<div class="row-fluid">
 					<nav class="span12">
-					
 						<?php $this->widget('zii.widgets.CMenu',array(
 							'items'=>array(
 								array('label'=>'Головна', 'url'=>array('/site/index')),
@@ -34,13 +32,10 @@
 								array('label'=>'Вихід ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 							),
 						)); ?>
-						
 					</nav>
 				</div>
 			</div>
-		
 		</div>
-		<div class="plashka" style="margin-top:-10px;"></div>
 		<div class="container">
 			<div class="row-fluid">
 				<?php echo $content; ?>
