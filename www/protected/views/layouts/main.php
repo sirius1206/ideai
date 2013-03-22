@@ -14,29 +14,40 @@
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
-<body>
+<body >
 	<div id="wrap">
 		<div id="header">
-			<div class="container">
+			<div class="container-fluid">
 				<div id="logo">
-					<a href="/"><img src="img/logo.png" ></a>
+					<a href="/"><img src="../../img/logo.png" width="200" ></a>
 				</div>
 				<div class="row-fluid">
 					<nav class="span12">
-						<?php $this->widget('zii.widgets.CMenu',array(
+						<?php
+                            //chear, because we are using url rules and CMenu do not accept get params in url
+                            if(isset($this->alias))$alias = $this->alias;
+                            ///
+                            $this->widget('zii.widgets.CMenu',array(
 							'items'=>array(
-								array('label'=>'Головна', 'url'=>array('/site/index')),
-								array('label'=>'Про проект', 'url'=>array('/site/page', 'view'=>'about')),
-								array('label'=>'Контакти', 'url'=>array('/site/contact')),
-								array('label'=>'Вхід', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-								array('label'=>'Вихід ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+								array('label'=>'Все', 'url'=>array('/site/index')),
+								array('label'=>'Архів', 'url'=>array('/archive'), 'active'=>$alias=="archive"?true:false),
+								array('label'=>'Ідеологія', 'url'=>array('/ideology'), 'active'=>$alias=="ideology"?true:false),
+								array('label'=>'Політика', 'url'=>array('/politics/'), 'active'=>$alias=="politics"?true:false),
+								array('label'=>'Культура', 'url'=>array('/culture/'), 'active'=>$alias=="culture"?true:false),
+								array('label'=>'Економіка', 'url'=>array('/economics/'), 'active'=>$alias=="economics"?true:false),
+								array('label'=>'Наука', 'url'=>array('/science/'), 'active'=>$alias=="science"?true:false),
+								array('label'=>'Технології', 'url'=>array('/tech'), 'active'=>$alias=="tech"?true:false),
+                                array('label'=>'вхід', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest, 'linkOptions'=>array('class'=>'dashed'), 'itemOptions'=>array('class'=>'pull-right')),
+                                array('label'=>'реєстрація', 'url'=>array('/site/reg'), 'visible'=>Yii::app()->user->isGuest, 'itemOptions'=>array('class'=>'pull-right ')),
+
+								array('label'=>'вихід ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest, 'linkOptions'=>array('class'=>'dashed'), 'itemOptions'=>array('class'=>'pull-right') )
 							),
 						)); ?>
 					</nav>
 				</div>
 			</div>
 		</div>
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row-fluid">
 				<?php echo $content; ?>
 			</div>
@@ -47,7 +58,7 @@
 
 	<div id="footer">
 	<div class="plashka"></div>
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span12">
 					

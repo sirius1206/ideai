@@ -7,14 +7,15 @@
 
 <div class="span4">
 	<?php
-		$this->beginWidget('zii.widgets.CPortlet', array(
-			'title'=>'Operations',
-		));
-		$this->widget('zii.widgets.CMenu', array(
-			'items'=>$this->menu,
-			'htmlOptions'=>array('class'=>'operations'),
-		));
-		$this->endWidget();
+        if(isset(Yii::app()->user->model) && Yii::app()->user->model->role != "user"){
+            $this->beginWidget('zii.widgets.CPortlet', array(
+            ));
+            $this->widget('zii.widgets.CMenu', array(
+                'items'=>$this->menu,
+                'htmlOptions'=>array('class'=>'operations'),
+            ));
+            $this->endWidget();
+        }
 	?>
 </div>
 
